@@ -1,0 +1,28 @@
+[02:14:28.055] Server  ERROR   ⨯ Error: Cannot find module 'next/dist/client/components/builtin/global-not-found'
+Require stack:
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/on-demand-entry-handler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/hot-reloader-turbopack.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-server.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/start-server.js
+[02:14:28.067] Server  ERROR   Error: Cannot find module 'next/dist/pages/_error'
+Require stack:
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/on-demand-entry-handler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/hot-reloader-turbopack.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-server.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/start-server.js
+[02:14:28.075] Server  ERROR   ⨯ Error: Cannot find module 'next/dist/pages/_error'
+Require stack:
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/on-demand-entry-handler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/hot-reloader-turbopack.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-server.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/start-server.js
+[02:14:28.084] Server  ERROR   Error: Cannot find module 'next/dist/pages/_error'
+Require stack:
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/on-demand-entry-handler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/dev/hot-reloader-turbopack.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/router-server.js
+- /Users/ashraf.mia/project/keychat/node_modules/next/dist/server/lib/start-server.js

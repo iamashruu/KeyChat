@@ -1,5 +1,35 @@
 import mongoose from "mongoose"
 
 export const connectDB = async () => {
-  await mongoose.connect(process.env.MONGO_URL)
+  const mongoUrl = process.env.MONGO_URL
+  try {
+    await mongoose.connect(mongoUrl, {
+      autoIndex: false,
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+    })
+    console.log("✅ MongoDB connected")
+
+    const gracefulExit = async () => {
+      await mongoose.connection.close()
+      console.log("🔌 MongoDB connection closed")
+      process.exit(0)
+    }
+
+    process.on("SIGINT", gracefulExit)
+    process.on("SIGTERM", gracefulExit)
+  } catch (err) {
+    console.error("❌ MongoDB connection failed:", err)
+    process.exit(1)
+  }
+
+  mongoose.connection.on("error", (err) =>
+    console.error("❌ MongoDB connection error:", err)
+  )
+
+  mongoose.connection.on("disconnected", () =>
+    console.warn("⚠️ MongoDB disconnected")
+  )
 }
+
