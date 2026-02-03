@@ -1,10 +1,12 @@
-// server.js
-// import "./config/env.js"
-// import { connectDB } from "./config/db.js"
-import app from "./app.js"
+import express from "express";
 
-// await connectDB()
+const app = express();
 
-app.listen(3001, () => {
-  console.log("Server running")
-})
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port: ${PORT}`);
+});
