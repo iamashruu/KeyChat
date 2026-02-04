@@ -1,7 +1,8 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import ENV from "../lib/utils/env.js";
 
 export const connectDB = async () => {
-  const mongoUrl = process.env.MONGO_URI 
+  const mongoUrl = ENV.MONGO_URI 
   try {
     await mongoose.connect(mongoUrl, {
       autoIndex: false,

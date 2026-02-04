@@ -1,13 +1,14 @@
 import express from "express";
 import path from "path";
-import { connectDB } from "./lib/db.js";
+import { connectDB } from "./database/db.js";
+import ENV from "./lib/utils/env.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 
 const app = express();
 const __dirname = path.resolve();
 
-const PORT = process.env.PORT || 5000;
+const PORT = ENV.PORT || 5000;
 
 app.use(express.json());
 
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 //make ready for deployment
-if(process.env.NODE_ENV === "production"){
+if(ENV.NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname,"../frontend/dist")));
 
   app.get("*",(_,res)=>{
