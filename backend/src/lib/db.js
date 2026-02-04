@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 export const connectDB = async () => {
-  const mongoUrl = process.env.MONGO_URL
+  const mongoUrl = process.env.MONGO_URI 
   try {
     await mongoose.connect(mongoUrl, {
       autoIndex: false,
@@ -9,7 +9,7 @@ export const connectDB = async () => {
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     })
-    console.log("✅ MongoDB connected")
+    console.log("✅ MongoDB connected", mongoose.connection.host)
 
     const gracefulExit = async () => {
       await mongoose.connection.close()
