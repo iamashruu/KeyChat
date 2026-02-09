@@ -5,6 +5,7 @@ import { connectDB } from "./database/db.js";
 import ENV from "./lib/utils/env.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
+import cors from "cors";
 
 const app = express();
 const __dirname = path.resolve();
@@ -12,6 +13,10 @@ const __dirname = path.resolve();
 const PORT = ENV.PORT || 5000;
 
 app.use(express.json());
+app.use(cors({
+  origin: ENV.CLIENT_URL,
+  credentials: true,
+}));
 app.use(cookieParser());
 
 app.use("/api/auth",authRoutes);
