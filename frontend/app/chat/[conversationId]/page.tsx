@@ -42,7 +42,7 @@ export default function ConversationPage({ params }: ConversationPageProps) {
 
   if (!conversation) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-slate-950 to-emerald-950">
+      <div className="flex-1 flex items-center justify-center bg-linear-to-br from-slate-950 to-emerald-950">
         <div className="text-center">
           <div className="w-8 h-8 border-3 border-slate-700 border-t-emerald-400 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-emerald-300/70">Loading conversation...</p>
