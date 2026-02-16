@@ -2,6 +2,7 @@ import { Server } from "socket.io";
 import ENV from "./utils/env.js";
 import http from "http";
 import express from "express";
+import { socketAuthMiddleware } from "../middlewares/socket.auth.middleware.js";
 
 const app = express();
 
@@ -19,3 +20,22 @@ const io = new Server(server,{
 // apply socket.io middleware to authenticate users
 
 io.use(socketAuthMiddleware);
+
+// this is for storing online users
+const userSocketMap = {}; // { userId: socketId }
+
+io.on("connection", (socket)=>{
+    console.log(`A user connected: (User: ${socket.user.fullName})`);
+    const userId = socket.userId;
+    userSocketMap[userId] = socket.id;
+
+    // io.emit() is used to send message to all connected clients
+
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
+
+    socket.on("disconnect",()=>{
+        console.log(`A user disconnected: (User: ${socket.user.fullName})`);
+        delete userSocketMap[userId];
+        io.emit("getOnlineUsers", Object.keys(userSocketMap));
+    });
+})
