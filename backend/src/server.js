@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import cors from "cors";
 
-const app = express();
+// const app = express();
 const __dirname = path.resolve();
 
 const PORT = ENV.PORT || 5000;
