@@ -8,10 +8,10 @@ export const socketAuthMiddleware = async (socket, next) => {
         // extract token from http-only cookies
 
         const token = socket.handshake.headers.cookie
-            ?.split("; ")
-            ?.find((cookie) => cookie.startsWith("token="))
+            ?.split(" ")
+            ?.find((cookie) => cookie.startsWith("jwt="))
             ?.split("=")[1];
-        
+        console.log("Extracted token from cookies: ", token);
         if (!token) {
             console.log("Socket connection rejected: No token provided");
             return next(new Error("Unauthorized - Token not found"));
@@ -35,7 +35,7 @@ export const socketAuthMiddleware = async (socket, next) => {
         socket.userId = user._id.toString();
 
         console.log(`Socket authenticated for user: ${user.fullName} (${user._id})`);
-        
+
         next();
     } catch (error) {
         console.log("Error in socketAuthMiddleware:", error.message);
