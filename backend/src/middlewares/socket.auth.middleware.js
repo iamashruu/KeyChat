@@ -11,7 +11,7 @@ export const socketAuthMiddleware = async (socket, next) => {
             ?.split(" ")
             ?.find((cookie) => cookie.startsWith("jwt="))
             ?.split("=")[1];
-        console.log("Extracted token from cookies: ", token);
+            
         if (!token) {
             console.log("Socket connection rejected: No token provided");
             return next(new Error("Unauthorized - Token not found"));
@@ -23,7 +23,7 @@ export const socketAuthMiddleware = async (socket, next) => {
             return next(new Error("Unauthorized - Invalid token"));
         }
 
-        const user = await User.findById(decoded._id).select("-password");
+        const user = await User.findById(decoded.userId).select("-password");
 
         if (!user) {
             console.log("Socket connection rejected: User not found");
