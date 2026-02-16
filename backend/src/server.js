@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { connectDB } from "./database/db.js";
+import { app, server } from "./lib/socket.js";
 import ENV from "./lib/utils/env.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
@@ -35,7 +36,7 @@ if(ENV.NODE_ENV === "production"){
   });
 };
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
   connectDB();
 });
